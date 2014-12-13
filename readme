@@ -1,0 +1,18 @@
+# mkdir /backup/bin/
+# cd /backup/bin/
+# git clone https://github.com/lerkh-d/backup.git
+
+/* редактируем настройки */
+# vim /backup/bin/duplicity_backup.sh
+# vim /backup/bin/mysqldump_backup.sh
+
+/* Делаем скрипты исполняемыми */
+# chmod +x /backup/bin/duplicity_backup.sh
+# chmod +x /backup/bin/mysqldump_backup.sh
+
+/* добавляем в крон задание */
+# crontab -e
+
+* 2 * * * /backup/bin/duplicity_backup.sh /var/www/USER/data/www/site.ru
+* 2 * * * /backup/bin/mysqldump_backup.sh "DB_name1 DB_name2 DB_name3"
+
