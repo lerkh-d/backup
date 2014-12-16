@@ -3,7 +3,6 @@
 # mkdir /backup
 # cd /backup
 # git clone https://github.com/lerkh-d/backup.git bin
-
 /* редактируем настройки */
 # vim /backup/bin/duplicity_backup.sh
 # vim /backup/bin/mysqldump_backup.sh
@@ -18,3 +17,13 @@
 * 2 * * * /backup/bin/duplicity_backup.sh /var/www/USER/data/www/site.ru
 * 2 * * * /backup/bin/mysqldump_backup.sh "DB_name1 DB_name2 DB_name3"
 
+/* Пример восстановления из созданного бекапа */
+# mkdir -p /backup/restore/serv
+
+/*  (чем)          	               (дата)          (откуда)                (куда)	*/
+# duplicity restore --no-encryption -t2014-12-17  file:///backup/minecraft /backup/restore/serv
+Local and Remote metadata are synchronized, no sync needed.
+Last full backup date: Wed Dec 17 02:45:45 2014
+
+# du sh /backup/restore/serv
+621M	/backup/restore/serv
