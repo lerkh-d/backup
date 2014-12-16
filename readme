@@ -1,8 +1,8 @@
 # apt-get install duplicity exim vim git-core
 
-# mkdir /backup/bin/
-# cd /backup/bin/
-# git clone https://github.com/lerkh-d/backup.git
+# mkdir /backup
+# cd /backup
+# git clone https://github.com/lerkh-d/backup.git bin
 
 /* редактируем настройки */
 # vim /backup/bin/duplicity_backup.sh

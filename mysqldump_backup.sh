@@ -8,8 +8,10 @@ _date="/bin/date"
 _mysqldump="/usr/bin/mysqldump"
 
 BACKUP_PATH="/backup/mysqldumps/"
+mkdir -p /backup/mysqldumps 			# проверяем малоли забыли создать директорию.
 
-DB_NAMES=$1
+
+DB_NAMES=$1					# получаем массив аргументов.
 DATE=`$_date '+_%Y_%m_%d'`
 
 
