@@ -24,12 +24,12 @@ echo -e "\n=======[${BACKUP_DATE}]========"                             >${MAIL_
 # $_duplicity cleanup --force --no-encryption ${BACKUP_DIR}             >>${MAIL_REPORT}
 ##
 
-echo -e "\n=======[Rotation if older then 7 day]========\n"             >>${MAIL_REPORT}
-## Родируем бекапы если они старше 7 дней ##
+echo -e "\n=======[Delete files if older then 60 day]========\n"        >>${MAIL_REPORT}
+## Удалить файлы, если старше 60 дней ##
 $_duplicity remove-older-than 60D --no-encryption ${BACKUP_DIR}         >>${MAIL_REPORT}
 
 echo -e "\n=======[Backup full if older then 7 day]========\n"          >>${MAIL_REPORT}
-## Делаем бекапчик ##
+## Делаем полный бекап если файлы старше 7 дней, иначе инкрементный ##
 $_duplicity --no-encryption --full-if-older-than 7D --exclude "**${EXCLUDE_DIR}/**" ${SITE_DIR} ${BACKUP_DIR} >>${MAIL_REPORT}
 
 echo -e "\n=======[Backup collection-status]========\n"                 >>${MAIL_REPORT}
